@@ -18,7 +18,7 @@ Challenge 18 (breadth first traversal) Required Features:
 - [x] Return a list of the values in the tree in the order they were encountered.
 '''
 
-from stacks_and_queues.stacks_and_queues import Queue
+from stacks_and_queues import Queue
 
 class InvalidOperationError(Exception):
     pass
