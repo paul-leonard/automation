@@ -31,36 +31,36 @@ def get_file_contents():
 
 def identify_numbers(text_to_search):
   numbers_bst = BinaryTreeSearch()
-  regex_phone = r'\d{3}[-\s]?\d{4}\D'  #only get's 7 digits so far
+  regex_phone = r'((\((\d{3})\)|\d{3})?[\s-]?(\d{3})[\s-]?(\d{4}))'
 
   # go through text and find each phone number using regex
   regex_finds = re.findall(regex_phone, text_to_search)
 
   for regex_find in regex_finds:
-    if numbers_bst.root.value == None or not numbers_bst.contains(regex_find):
-      numbers_bst.add(regex_find)
+    #if area code was not included, say it is 206
 
-
-  # edit each number to correct format
-    # correct dashes
-    # add 206 if needed
-
-  # if number not already in BST using the contain method
-  # if not numbers_bst.contains(number):
-    # add each number to BST
-
+    if not regex_find[1] and not regex_find[2]:
+      this_number_in_correct_format = "206-" + regex_find[3] + "-" + regex_find[4]
+    elif regex_find[2]:
+      this_number_in_correct_format = regex_find[2] + "-" +  regex_find[3] + "-" + regex_find[4]
+    else:
+      this_number_in_correct_format = regex_find[1] + "-" + regex_find[3] + "-" + regex_find[4]
+    
+    if numbers_bst.root.value == None or not numbers_bst.contains(this_number_in_correct_format):
+      numbers_bst.add(this_number_in_correct_format)
 
   return numbers_bst
 
 
 def identify_emails(text_to_search):
   emails_bst = BinaryTreeSearch()
-  regex_email = re.compile(r'^\S+@\S+.\w{3}')      #still to figure out
-  # will be similar to numbers
-  # go through text and find each phone number using regex
-  # edit each number to correct format (add 206 if needed)
-  # if number not already in BST using the contain method 
-    # add each number to BST
+  regex_email = r'^\S+@\S+.\w{3}'      #still to figure out
+  regex_finds = re.findall(regex_email, text_to_search)
+
+  for regex_find in regex_finds:
+    if emails_bst.root.value == None or not emails_bst.contains(regex_find):
+      emails_bst.add(regex_find)
+
   return emails_bst
   
 

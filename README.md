@@ -27,3 +27,4 @@ This script opens the target text file and uses regex to search for phone number
 - [not a digit](https://www3.ntu.edu.sg/home/ehchua/programming/howto/Regexe.html#:~:text=In%20regex%2C%20the%20uppercase%20metacharacter,%5E0%2D9%5D%20).)
 - [read file](https://www.w3schools.com/python/python_file_open.asp)
 - [regex re library](https://docs.python.org/3/library/re.html)
+- [re.findall with groups](https://developers.google.com/edu/python/regular-expressions)
