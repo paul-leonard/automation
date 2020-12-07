@@ -36,9 +36,9 @@ def identify_numbers(text_to_search):
   # go through text and find each phone number using regex
   regex_finds = re.findall(regex_phone, text_to_search)
 
-  for find in regex_finds:
-    # if not numbers_bst.contains(find):
-    numbers_bst.add(find)
+  for regex_find in regex_finds:
+    if numbers_bst.root.value == None or not numbers_bst.contains(regex_find):
+      numbers_bst.add(regex_find)
 
 
   # edit each number to correct format
