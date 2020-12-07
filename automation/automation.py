@@ -1,22 +1,24 @@
 '''
 Required Features:
-- [ ] Given a document potential-contacts, find and collect all email addresses and phone numbers.
-- [ ] Phone numbers may be in various formats.
-- [ ] (xxx) yyy-zzzz
-- [ ] yyy-zzzz
-- [ ] xxx-yyy-zzzz
-- [ ] etc.
-- [ ] phone numbers with missing area code should presume 206
-- [ ] phone numbers should be stored in xxx-yyy-zzzz format.
-- [ ] Once emails and phone numbers are found they should be stored in - [ ] two separate documents.
-- [ ] The information should be sorted in ascending order.
-- [ ] Duplicate entries are not allowed.
+- [x] Given a document potential-contacts, find and collect all email addresses and phone numbers.
+- [x] Phone numbers may be in various formats.
+- [x] (xxx) yyy-zzzz
+- [x] yyy-zzzz
+- [x] xxx-yyy-zzzz
+- [x] etc.
+- [x] phone numbers with missing area code should presume 206
+- [x] phone numbers should be stored in xxx-yyy-zzzz format.
+- [x] Once emails and phone numbers are found they should be stored in two separate documents.
+- [x] The information should be sorted in ascending order.
+- [x] Duplicate entries are not allowed.
 '''
 
 
 # ******  IMPORTS  ******
 import re
 from tree import BinaryTreeSearch
+
+
 
 # ******  DEFINITIONS  ******
 class InvalidOperationError(Exception):
@@ -54,7 +56,7 @@ def identify_numbers(text_to_search):
 
 def identify_emails(text_to_search):
   emails_bst = BinaryTreeSearch()
-  regex_email = r'^\S+@\S+.\w{3}'      #still to figure out
+  regex_email = r'\S+@\S+'      #still to figure out
   regex_finds = re.findall(regex_email, text_to_search)
 
   for regex_find in regex_finds:
@@ -97,11 +99,6 @@ numbers_bst = identify_numbers(text_to_search)
 numbers_text = text_to_write(numbers_bst)
 write_to_file(numbers_text, "numbers")
 
-# emails_bst = identify_emails(text_to_search)
-# emails_text = text_to_write(emails_bst)
-# write_to_file(emails_text, "emails")
-
-
-
-
-    
+emails_bst = identify_emails(text_to_search)
+emails_text = text_to_write(emails_bst)
+write_to_file(emails_text, "emails")
